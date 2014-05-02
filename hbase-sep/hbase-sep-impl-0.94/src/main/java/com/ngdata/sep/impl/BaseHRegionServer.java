@@ -368,4 +368,14 @@ public class BaseHRegionServer implements HRegionInterface, Server {
     public ServerName getServerName() {
         throw new UnsupportedOperationException("Not implemented");
     }
+
+    @Override
+    public boolean bulkLoadHFiles(List<Pair<byte[], String>> lists, byte[] bytes, boolean bln) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Result[] scan(byte[] bytes, Scan scan, int i) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
