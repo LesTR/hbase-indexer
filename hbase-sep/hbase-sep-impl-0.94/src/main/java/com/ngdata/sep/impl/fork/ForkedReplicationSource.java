@@ -1093,7 +1093,7 @@ public class ForkedReplicationSource extends Thread
     }
 
     // SEP change: needed because we use replicationsource from 0.94.8 with older hbase in cdh 4.2.0
-    @Override
+    //@Override
     public String getStats() {
         return "Total replicated edits: " + totalReplicatedEdits + ", currently replicating from: " + this.currentPath
                 + " at position: " + lastLoggedPosition;
