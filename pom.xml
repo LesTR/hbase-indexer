@@ -19,7 +19,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <properties>
-    <version.solr>4.7.1</version.solr>
+    <version.solr>4.8.0</version.solr>
     <version.guava>11.0.2</version.guava>
     <version.joda-time>1.6</version.joda-time>
     <version.slf4j>1.7.5</version.slf4j>
@@ -31,7 +31,7 @@
     <version.hadoop.mr1>2.0.0-mr1-cdh4.4.0</version.hadoop.mr1>
     <version.hadoop.mr1.hbase95>2.2.0-mr1-cdh5.0.0-SNAPSHOT</version.hadoop.mr1.hbase95>
     <version.hadoop.mr1.hbase98>2.3.0-mr1-cdh5.1.0-SNAPSHOT</version.hadoop.mr1.hbase98>
-    <version.hadoop>2.0.0-cdh4.4.0</version.hadoop>
+    <version.hadoop>2.2.0</version.hadoop>
     <version.zookeeper>3.4.5-cdh4.4.0</version.zookeeper>
     <version.jackson>1.8.8</version.jackson>
     <version.httpclient>4.2.5</version.httpclient>
@@ -39,6 +39,9 @@
     <version.search>1.2.0</version.search>
     <version.search.hbase98>1.0.0-cdh5.0.0</version.search.hbase98>
     <version.jersey>1.17</version.jersey>
+
+    <version.mockito>1.8.5</version.mockito>    
+    <version.junit>4.8.1</version.junit>    
 
     <!-- Tells maven plugins what file encoding to use -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -421,6 +424,19 @@
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
         <version>${version.joda-time}</version>
+      </dependency>
+      
+	  <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>${version.mockito}</version>
+        <scope>test</scope>
+      </dependency>
+	  <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${version.junit}</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
