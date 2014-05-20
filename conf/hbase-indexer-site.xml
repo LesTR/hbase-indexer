@@ -1,3 +1,22 @@
 <?xml version="1.0"?>
 <configuration>
+	<property>
+		<name>hbaseindexer.zookeeper.connectstring</name>
+		<value>hbase</value>
+	</property>
+	<property>
+		<name>hbase.zookeeper.quorum</name>
+		<value>hbase</value>
+	</property>
+	<property>
+		<name>hbaseindexer.defaults.for.version</name>
+		<value>1.5-SNAPSHOT</value>
+		<description>
+			This defaults file was compiled for version @@@VERSION@@@. This variable
+			is used
+			to make sure that a user doesn't have an old version of
+			hbase-indexer-default.xml on the
+			classpath.
+		</description>
+	</property>
 </configuration>
