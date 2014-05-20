@@ -176,14 +176,24 @@ class HBaseIndexingOptions extends OptionsBridge {
         IndexerComponentFactory factory = IndexerComponentFactoryUtil.getComponentFactory(hbaseIndexingSpecification.getIndexerComponentFactory(), new ByteArrayInputStream(hbaseIndexingSpecification.getConfiguration()), hbaseIndexingSpecification.getIndexConnectionParams());
         IndexerConf indexerConf = factory.createIndexerConf();
         applyMorphLineParams(indexerConf);
-        HTableDescriptor[] tables = new HTableDescriptor[0];
-        try {
-            HBaseAdmin admin = getHbaseAdmin();
-            tables = admin.listTables(indexerConf.getTable());
-        } catch (IOException e) {
-            new RuntimeException("Error occurred fetching hbase tables", e);
+        List<byte[]> tableNames = Lists.newArrayList();
+        String tableNameSpec = indexerConf.getTable();
+        if (indexerConf.tableNameIsRegex()) {
+            HTableDescriptor[] tables;
+            try {
+                HBaseAdmin admin = getHbaseAdmin();
+                tables = admin.listTables(tableNameSpec);
+            } catch (IOException e) {
+                throw new RuntimeException("Error occurred fetching hbase tables", e);
+            }
+            for (HTableDescriptor descriptor : tables) {
+                tableNames.add(descriptor.getName());
+            }
+        } else {
+            tableNames.add(Bytes.toBytesBinary(tableNameSpec));
         }
-        for (HTableDescriptor descriptor : tables) {
+        
+        for (byte[] tableName : tableNames) {
             Scan hbaseScan = new Scan();
             hbaseScan.setCacheBlocks(false);
             hbaseScan.setCaching(conf.getInt("hbase.client.scanner.caching", 200));
@@ -230,7 +240,7 @@ class HBaseIndexingOptions extends OptionsBridge {
                 Get get = resultToSolrMapper.getGet(HBaseShims.newGet().getRow());
                 hbaseScan.setFamilyMap(get.getFamilyMap());
             }
-            hbaseScan.setAttribute(Scan.SCAN_ATTRIBUTES_TABLE_NAME, descriptor.getName());
+            hbaseScan.setAttribute(Scan.SCAN_ATTRIBUTES_TABLE_NAME, tableName);
 
             scans.add(hbaseScan);
         }
