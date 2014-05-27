@@ -23,6 +23,7 @@
 # */
 
 # Set environment variables here.
+HADOOP_HOME="hdfs://hbase:9000/hbase"
 
 # This script sets variables multiple times over the course of starting an hbase-indexer process,
 # so try to keep things idempotent unless you want to take an even deeper look

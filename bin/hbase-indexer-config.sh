@@ -49,6 +49,7 @@ this="$bin/$script"
 # the root of the hbase-indexer installation
 if [ -z "$HBASE_INDEXER_HOME" ]; then
   export HBASE_INDEXER_HOME=`dirname "$this"`/..
+  echo $HBASE_INDEXER_HOME
 fi
 
 #check to see if the conf dir or hbase-indexer home are given as an optional arguments
