@@ -30,7 +30,7 @@
   </parent>
 
   <properties>
-    <hadoop.version>${version.hadoop.mr1.hbase98}</hadoop.version>
+    <hadoop.version>${version.hadoop.hbase98}</hadoop.version>
   </properties>
 
   <dependencies>
@@ -120,10 +120,6 @@
       </properties>
 
       <dependencies>
-        <dependency>
-          <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-core</artifactId>
-        </dependency>
         <!-- 
         <dependency>
           <groupId>org.apache.hbase</groupId>
@@ -137,6 +133,12 @@
           <scope>test</scope>
         </dependency>
          -->
+
+<!-- 
+        <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-core</artifactId>
+        </dependency>
         <dependency>
           <groupId>org.apache.hadoop</groupId>
           <artifactId>hadoop-test</artifactId>
@@ -148,6 +150,12 @@
           <classifier>tests</classifier>
           <scope>test</scope>
         </dependency>
+ -->
+ 		<dependency>
+ 			<groupId>org.apache.hadoop</groupId>
+ 			<artifactId>hadoop-mapreduce-client-core</artifactId>
+ 		</dependency>		
+ 
         <dependency>
           <groupId>org.apache.hadoop</groupId>
           <artifactId>hadoop-hdfs</artifactId>
