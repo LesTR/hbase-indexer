@@ -98,9 +98,6 @@ public class ReplicationStatusRetriever {
 		ServerName serverName = ServerName.parseFrom(masterServerName);
         String hbaseMasterHostName = serverName.getHostname();
         
-        // hack
-        hbaseMasterHostName = "hbase";
-
         String url = String.format("http://%s:%d/conf", hbaseMasterHostName, hbaseMasterPort);
         System.out.println("Reading HBase configuration from " + url);
         byte[] data = readUrl(url);
